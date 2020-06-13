@@ -18,6 +18,12 @@ namespace MinimumJumps
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            // initialize the sqlite db if it doesn't exist
+            using (var client = new MinimumJumpsContext())
+            {
+                client.Database.EnsureCreated();
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +32,7 @@ namespace MinimumJumps
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<MinimumJumpsContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

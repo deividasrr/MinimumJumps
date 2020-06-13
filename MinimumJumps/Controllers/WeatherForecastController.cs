@@ -27,6 +27,11 @@ namespace MinimumJumps.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+
+            var context = new MinimumJumpsContext();
+            //context.MinimumJumpHistories.Add(new MinimumJumpHistory { entries = "1,2,3", shortestPath = 2 });
+            //context.SaveChanges();
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -34,6 +39,8 @@ namespace MinimumJumps.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+
+
         }
     }
 }

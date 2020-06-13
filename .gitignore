@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/MinimumJumps/minimumjumpsdb.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
